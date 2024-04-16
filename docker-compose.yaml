@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  # frontend:  //not really needed for this project
+  #   container_name: frontend
+  #   build: ./frontend
+  #   ports:
+  #     - 5173:5173
+
+  mongo:
+    container_name: ekashunyam_db
+    image: mongo:latest
+    restart: always
+    volumes:
+      - ./backend/data:/data/db
+
+  backend:
+    container_name: backend
+    build: ./backend
+    environment:
+      PORT: 8080
+      DATABASE_URL: "mongodb://mongo:27017"
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo
+
+volumes:
+  mongo:

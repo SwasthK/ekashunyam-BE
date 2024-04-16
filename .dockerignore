@@ -1,0 +1,8 @@
+.env
+node_modules
+.vscode/
+secret.txt
+*.log
+*.tmp
+README.md
+data
