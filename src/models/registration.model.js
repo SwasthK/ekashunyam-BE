@@ -11,17 +11,6 @@ const participantSchema = mongoose.Schema({
   },
 });
 
-// const eventSchema = mongoose.Schema({
-//   eventName: {
-//     type: String,
-//     required: [true, "Event name is required"],
-//   },
-//   participants: {
-//     type: [participantSchema],
-//     required: [true, "Participants are required"],
-//   },
-// });
-
 const registrationSchema = mongoose.Schema(
   {
     registeredUser: {

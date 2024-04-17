@@ -4,6 +4,7 @@ import { VerifyHashedPassword } from "../utils/hashing.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 import { ApiError } from "../utils/apiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
+import { Registration } from "../models/registration.model.js";
 
 const handleLogin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -15,7 +16,7 @@ const handleLogin = asyncHandler(async (req, res) => {
   try {
     user = await User.findOne(
       { email: email },
-      { email: 1, collegeName: 1, password: 1 }
+      { email: 1, collegeName: 1, password: 1, registration: 1 }
     );
   } catch (error) {
     throw new ApiError(500, "Error occured when querying db", error);
@@ -34,7 +35,7 @@ const handleLogin = asyncHandler(async (req, res) => {
       httpOnly: true,
       secure: true,
     })
-    .json(new ApiResponse(200, user, "Logged in successfully", token)); // remove token in production
+    .json(new ApiResponse(200, user, "Logged in successfully")); // remove token in production
 });
 
 export { handleLogin };

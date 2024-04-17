@@ -42,5 +42,4 @@ app.use("/api/user/register", registerRoute);
 app.use("/api/user/login", loginRoute);
 app.use("/api/user/verify", verifyTokenRoute);
 app.use("/api/user/fest", auth, festRoutes);
-
 app.listen(port, () => console.log(`server running:http://localhost:${port}`));
