@@ -31,8 +31,8 @@ const handleRegistration = asyncHandler(async (req, res) => {
 
     // retrieving only necessary information
     user = await User.findOne(
-      { email: newUser.email },
-      { email: 1, collegeName: 1 }
+      { _id: newUser._id },
+      { email: 1, collegeName: 1, registration: 1 }
     );
     if (!user) throw new Error("Server Error occured during creation of user"); //throwing error incase user creation is unsuccessfull
   } catch (error) {
@@ -47,7 +47,7 @@ const handleRegistration = asyncHandler(async (req, res) => {
       httpOnly: true,
       // secure: true,     // ! turn on when https availble
     })
-    .json(new ApiResponse(201, user, "Registraion complete", token)); // Remove token in production
+    .json(new ApiResponse(201, user, "Registraion complete")); // Remove token in production
 });
 
 export { handleRegistration };
