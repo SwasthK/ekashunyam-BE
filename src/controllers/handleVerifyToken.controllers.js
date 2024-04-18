@@ -4,7 +4,7 @@ import { verifyToken } from "../utils/authentication.js";
 import { User } from "../models/user.model.js";
 const handleVerifyToken = asyncHandler(async (req, res) => {
   let token = req.cookies.accessToken;
-  console.log(token);
+  console.log(req.cookies);
   const isTokenValid = verifyToken(token);
 
   //sending user data to client
