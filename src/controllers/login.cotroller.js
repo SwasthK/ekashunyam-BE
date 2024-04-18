@@ -32,8 +32,8 @@ const handleLogin = asyncHandler(async (req, res) => {
     .status(200)
     .cookie("accessToken", token, {
       maxAge: 7 * 24 * 60 * 60 * 1000, // ! Expires in 7 Days
-      httpOnly: true,
-      secure: true,
+      // httpOnly: true,
+      // secure: true,
     })
     .json(new ApiResponse(200, user, "Logged in successfully")); // remove token in production
 });
