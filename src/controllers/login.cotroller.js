@@ -7,7 +7,6 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { Registration } from "../models/registration.model.js";
 
 const handleLogin = asyncHandler(async (req, res) => {
-  console.log(req.cookies.accessToken);
   const { email, password } = req.body;
   if (!(email && password)) {
     throw new ApiError(402, "Provide all credentials !!");
@@ -33,8 +32,9 @@ const handleLogin = asyncHandler(async (req, res) => {
     .status(200)
     .cookie("accessToken", token, {
       maxAge: 7 * 24 * 60 * 60 * 1000, // ! Expires in 7 Days
-      // httpOnly: true,
-      // secure: true,
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
     })
     .json(new ApiResponse(200, user, "Logged in successfully")); // remove token in production
 });

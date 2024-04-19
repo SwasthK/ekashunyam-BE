@@ -44,8 +44,9 @@ const handleRegistration = asyncHandler(async (req, res) => {
     .status(201)
     .cookie("accessToken", token, {
       maxAge: 7 * 24 * 60 * 60 * 1000, // !Expires in 7 Days
-      // httpOnly: true,
-      // secure: true, // ! turn on when https availble
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
     })
     .json(new ApiResponse(201, user, "Registraion complete")); // Remove token in production
 });
