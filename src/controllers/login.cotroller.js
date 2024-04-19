@@ -4,7 +4,6 @@ import { VerifyHashedPassword } from "../utils/hashing.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 import { ApiError } from "../utils/apiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
-import { Registration } from "../models/registration.model.js";
 
 const handleLogin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -34,6 +33,7 @@ const handleLogin = asyncHandler(async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000, // ! Expires in 7 Days
       httpOnly: true,
       secure: true,
+      sameSite: "None",
     })
     .json(new ApiResponse(200, user, "Logged in successfully")); // remove token in production
 });
