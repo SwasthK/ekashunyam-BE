@@ -4,7 +4,6 @@ import { VerifyHashedPassword } from "../utils/hashing.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 import { ApiError } from "../utils/apiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
-import { Registration } from "../models/registration.model.js";
 
 const handleLogin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
