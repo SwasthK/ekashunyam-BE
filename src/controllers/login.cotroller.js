@@ -7,6 +7,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { Registration } from "../models/registration.model.js";
 
 const handleLogin = asyncHandler(async (req, res) => {
+  console.log(req.cookies.accessToken);
   const { email, password } = req.body;
   if (!(email && password)) {
     throw new ApiError(402, "Provide all credentials !!");
