@@ -47,10 +47,10 @@ const registrationSchema = mongoose.Schema(
         true,
         "photography and videography event details are required",
       ],
-      cultural: {
-        type: [participantSchema],
-        required: [true, "cultural event details are required"],
-      },
+    },
+    cultural: {
+      type: [participantSchema],
+      required: [true, "cultural event details are required"],
     },
   },
   { timestamps: true }
